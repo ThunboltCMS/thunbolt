@@ -71,8 +71,8 @@ if (!function_exists('endTimer')) {
 		$sec = floor($time);
 		$ms = floor(($time - $sec) * 1e3);
 		$us = NULL;
-		if ($ms == 0) {
-			$us = " µs: " . floor($time * 1e6);
+		if ($sec == 0 && $ms < 10) {
+			$us = " µs: " . floor((($time * 1e3) - $ms) * 1e3);
 		}
 		bb("sec: $sec ms: $ms$us");
 	}
