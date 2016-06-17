@@ -56,8 +56,24 @@ if (!function_exists('timer')) {
 if (!function_exists('endTimer')) {
 	/**
 	 * @param string $name
+	 * @param bool $pretty
 	 */
-	function endTimer($name = NULL) {
-		bb(Debugger::timer($name) * 1000);
+	function endTimer($name = NULL, $pretty = TRUE) {
+		$time = Debugger::timer($name);
+		if ($time === 0) {
+			trigger_error('You have not started timer.');
+			return;
+		}
+		if (!$pretty) {
+			bb($time);
+			return;
+		}
+		$sec = floor($time);
+		$ms = floor(($time - $sec) * 1e3);
+		$us = NULL;
+		if ($ms == 0) {
+			$us = " µs: " . floor($time * 1e6);
+		}
+		bb("sec: $sec ms: $ms$us");
 	}
 }
