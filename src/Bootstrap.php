@@ -22,7 +22,7 @@ class Bootstrap {
 	 * @param Configurator $configurator
 	 */
 	public function loadComposerConfig(Configurator $configurator) {
-		$configFile = $this->baseDir . '/config/composer.json';
+		$configFile = $this->baseDir . '/../mod/composer.json';
 		if (file_exists($configFile)) {
 			$configs = json_decode(file_get_contents($configFile), TRUE);
 			if (isset($configs['configs']) && is_array($configs['configs'])) {
