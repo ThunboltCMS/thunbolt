@@ -44,9 +44,4 @@ class Bootstrap {
 		$this->configurator->setTempDirectory($this->baseDir . '/../var/tmp');
 	}
 
-	public function registerCoreConfigs() {
-		$this->configurator->addConfig($this->baseDir . '/config/core/extensions.neon');
-		$this->configurator->addConfig($this->baseDir . '/config/core/config.neon');
-	}
-
 }
