@@ -1,6 +1,9 @@
 {
 	"name": "thunbolt/thunbolt",
 	"type": "library",
+	"require": {
+		"php": ">=7.1"
+	},
 	"autoload": {
 		"classmap": [
 			"src/"

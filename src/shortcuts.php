@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Tracy\Debugger;
 use Tracy\Dumper;
 
@@ -12,7 +14,7 @@ if (!function_exists('bb')) {
 	 * @param int $length
 	 * @param int $depth
 	 */
-	function bb($var, $length = NULL, $depth = NULL) {
+	function bb($var, int $length = NULL, int $depth = NULL): void {
 		$backtrace = debug_backtrace();
 		if (isset($backtrace[1]['class'])) {
 			$source = $backtrace[1]['class'] . '::' . $backtrace[1]['function'];
@@ -36,7 +38,7 @@ if (!function_exists('dd')) {
 	 * @param int $length
 	 * @param int $depth
 	 */
-	function dd($var, $length = NULL, $depth = NULL) {
+	function dd($var, int $length = NULL, int $depth = NULL): void {
 		Debugger::dump($var, [
 			Dumper::TRUNCATE => $length ? : Debugger::$maxLen,
 			Dumper::DEPTH => $depth ? : Debugger::$maxDepth
@@ -48,7 +50,7 @@ if (!function_exists('timer')) {
 	/**
 	 * @param string $name
 	 */
-	function timer($name = NULL) {
+	function timer(string $name = NULL): void {
 		Debugger::timer($name);
 	}
 }
@@ -58,7 +60,7 @@ if (!function_exists('endTimer')) {
 	 * @param string $name
 	 * @param bool $pretty
 	 */
-	function endTimer($name = NULL, $pretty = TRUE) {
+	function endTimer(string $name = NULL, bool $pretty = TRUE): void {
 		$time = Debugger::timer($name);
 		if ($time === 0) {
 			trigger_error('You have not started timer.');

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Thunbolt;
 
 use Nette\Configurator;
@@ -15,12 +17,7 @@ class Bootstrap {
 	/** @var Configurator */
 	private $configurator;
 
-	/**
-	 * @param string $baseDir
-	 * @param Configurator $configurator
-	 * @param bool $initDirs
-	 */
-	public function __construct($baseDir, Configurator $configurator, $initDirs = TRUE) {
+	public function __construct(string $baseDir, Configurator $configurator, bool $initDirs = TRUE) {
 		$this->baseDir = $baseDir;
 		$this->configurator = $configurator;
 		if ($initDirs) {
@@ -33,7 +30,7 @@ class Bootstrap {
 		}
 	}
 
-	public function initialize() {
+	public function initialize(): void {
 		if (class_exists(SoftExtensionsExtension::class)) {
 			SoftExtensionsExtension::register($this->configurator);
 		}
