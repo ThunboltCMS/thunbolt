@@ -31,9 +31,6 @@ class Bootstrap {
 	}
 
 	public function initialize(): void {
-		if (class_exists(SoftExtensionsExtension::class)) {
-			SoftExtensionsExtension::register($this->configurator);
-		}
 		BundlesExtension::register($this->configurator);
 
 		$this->configurator->enableDebugger($this->baseDir . '/../var/log');
