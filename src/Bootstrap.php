@@ -24,8 +24,8 @@ class Bootstrap {
 			$this->configurator->addParameters([
 				'bundlesDir' => $baseDir . '/bundles',
 				'layoutsDir' => $baseDir . '/layouts',
-				'plgDir' => $baseDir . '/../' . ComposerDirectories::PLG_DIR,
-				'plgResDir' => $baseDir . '/../' . ComposerDirectories::PLG_RES_DIR,
+				'pluginDir' => $baseDir . '/../' . ComposerDirectories::PLUGIN_DIR,
+				'pluginAssetsDir' => $baseDir . '/../' . ComposerDirectories::PLUGIN_ASSETS_DIR,
 			]);
 		}
 	}
