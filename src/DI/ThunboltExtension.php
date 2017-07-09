@@ -16,11 +16,18 @@ class ThunboltExtension extends CompilerExtension {
 		$wwwDir = $builder->parameters['wwwDir'];
 
 		$this->compiler->addConfig([
-			'bundlesDir' => $appDir . '/bundles',
-			'layoutsDir' => $appDir . '/layouts',
-			'pluginsDir' => $appDir . '/../' . ComposerDirectories::PLUGIN_DIR,
-			'pluginAssetsDir' => $wwwDir . '/' . ComposerDirectories::PLUGIN_ASSETS_DIR,
+			'parameters' => [
+				'bundlesDir' => $appDir . '/bundles',
+				'layoutsDir' => $appDir . '/layouts',
+				'pluginsDir' => $appDir . '/../' . ComposerDirectories::PLUGIN_DIR,
+				'pluginAssetsDir' => $wwwDir . '/' . ComposerDirectories::PLUGIN_ASSETS_DIR,
+			],
 		]);
+
+		$builder->parameters['bundlesDir'] = $appDir . '/bundles';
+		$builder->parameters['layoutsDir'] = $appDir . '/layouts';
+		$builder->parameters['pluginsDir'] = $appDir . '/../' . ComposerDirectories::PLUGIN_DIR;
+		$builder->parameters['pluginAssetsDir'] = $wwwDir . '/' . ComposerDirectories::PLUGIN_ASSETS_DIR;
 
 		$builder->addDefinition($this->prefix('directories'))
 			->setClass(Directories::class, [
