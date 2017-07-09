@@ -2,12 +2,18 @@
 	"name": "thunbolt/thunbolt",
 	"type": "library",
 	"require": {
-		"php": ">=7.1"
+		"php": ">=7.1",
+		"nette/bootstrap": "^2.4 || ^3.0",
+		"nette/http": "^2.4 || ^3.0"
+	},
+	"require-dev": {
+		"thunbolt/composer-installer": "dev-master",
+		"thunbolt/bundles": "dev-master"
 	},
 	"autoload": {
-		"classmap": [
-			"src/"
-		],
+		"psr-4": {
+			"Thunbolt\\": "src/"
+		},
 		"files": [
 			"src/shortcuts.php"
 		]

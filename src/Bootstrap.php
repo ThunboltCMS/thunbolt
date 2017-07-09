@@ -7,27 +7,22 @@ namespace Thunbolt;
 use Nette\Configurator;
 use Thunbolt\Bundles\DI\BundlesExtension;
 use Thunbolt\Composer\ComposerDirectories;
+use Thunbolt\DI\ThunboltExtension;
 use Thunbolt\SoftExtensions\DI\SoftExtensionsExtension;
 
 class Bootstrap {
 
-	/** @var string */
-	private $baseDir;
-
 	/** @var Configurator */
 	private $configurator;
 
-	public function __construct(string $baseDir, Configurator $configurator, bool $initDirs = TRUE) {
-		$this->baseDir = $baseDir;
+	/** @var string */
+	private $baseDir;
+
+	public function __construct(string $baseDir, Configurator $configurator) {
 		$this->configurator = $configurator;
-		if ($initDirs) {
-			$this->configurator->addParameters([
-				'bundlesDir' => $baseDir . '/bundles',
-				'layoutsDir' => $baseDir . '/layouts',
-				'pluginDir' => $baseDir . '/../' . ComposerDirectories::PLUGIN_DIR,
-				'pluginAssetsDir' => $baseDir . '/../' . ComposerDirectories::PLUGIN_ASSETS_DIR,
-			]);
-		}
+		$this->baseDir = $baseDir;
+
+		$this->configurator->defaultExtensions['thunbolt'] = ThunboltExtension::class;
 	}
 
 	public function initialize(): void {
