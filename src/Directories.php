@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Thunbolt;
 
-use Nette\Http\Request;
+use Nette\Http\IRequest;
 use Thunbolt\Composer\ComposerDirectories;
 
 class Directories {
@@ -31,7 +31,7 @@ class Directories {
 	private $pluginAssetsUrlPath;
 
 	public function __construct(string $wwwDir, string $appDir, string $bundlesDir, string $layoutsDir,
-								string $pluginsDir, string $pluginAssetsDir, Request $request) {
+								string $pluginsDir, string $pluginAssetsDir, IRequest $request) {
 		$this->wwwDir = $wwwDir;
 		$this->appDir = $appDir;
 		$this->bundlesDir = $bundlesDir;
