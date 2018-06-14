@@ -30,7 +30,7 @@ class ThunboltExtension extends CompilerExtension {
 		$builder->parameters['pluginAssetsDir'] = $wwwDir . '/' . ComposerDirectories::PLUGIN_ASSETS_DIR;
 
 		$builder->addDefinition($this->prefix('directories'))
-			->setClass(Directories::class, [
+			->setType(Directories::class, [
 				$builder->parameters['appDir'], $builder->parameters['wwwDir'], $builder->parameters['bundlesDir'],
 				$builder->parameters['layoutsDir'], $builder->parameters['pluginsDir'], $builder->parameters['pluginAssetsDir'],
 			]);
