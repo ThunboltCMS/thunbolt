@@ -14,7 +14,7 @@ if (!function_exists('bb')) {
 	 * @param int $length
 	 * @param int $depth
 	 */
-	function bb($var, int $length = NULL, int $depth = NULL): void {
+	function bb($var, int $depth = NULL): void {
 		$backtrace = debug_backtrace();
 		if (isset($backtrace[1]['class'])) {
 			$source = $backtrace[1]['class'] . '::' . $backtrace[1]['function'];
@@ -22,26 +22,10 @@ if (!function_exists('bb')) {
 			$source = basename($backtrace[0]['file']);
 		}
 		$line = $backtrace[0]['line'];
-		Debugger::barDump($var, $source . ' (' . $line . ')', [
-			Dumper::TRUNCATE => $length ? : Debugger::$maxLen,
-			Dumper::DEPTH => $depth ? : Debugger::$maxDepth
-		]);
-	}
-}
 
-if (!function_exists('dd')) {
-	/**
-	 * Tracy\Debugger::dump() shortcut.
-	 *
-	 * @tracySkipLocation
-	 * @param mixed $var
-	 * @param int $length
-	 * @param int $depth
-	 */
-	function dd($var, int $length = NULL, int $depth = NULL): void {
-		Debugger::dump($var, [
-			Dumper::TRUNCATE => $length ? : Debugger::$maxLen,
-			Dumper::DEPTH => $depth ? : Debugger::$maxDepth
+		bdump($var, $source . ' (' . $line . ')', [
+			'truncate' => 9999,
+			'depth' => $depth ?: Debugger::$maxDepth,
 		]);
 	}
 }
