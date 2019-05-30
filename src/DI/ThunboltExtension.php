@@ -5,6 +5,9 @@ namespace Thunbolt\DI;
 use Nette\DI\CompilerExtension;
 use Thunbolt\ProjectDirectories;
 
+/**
+ * @internal
+ */
 class ThunboltExtension extends CompilerExtension {
 
 	public function loadConfiguration() {
