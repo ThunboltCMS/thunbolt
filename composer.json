@@ -2,13 +2,9 @@
 	"name": "thunbolt/thunbolt",
 	"type": "library",
 	"require": {
-		"php": ">=7.1",
-		"nette/bootstrap": "^2.4 || ^3.0",
-		"nette/http": "^2.4 || ^3.0"
-	},
-	"require-dev": {
-		"thunbolt/composer-installer": "dev-master",
-		"thunbolt/bundles": "dev-master"
+		"php": ">= 7.1",
+		"nette/bootstrap": "^3.0",
+		"nette/http": "^3.0"
 	},
 	"autoload": {
 		"psr-4": {
